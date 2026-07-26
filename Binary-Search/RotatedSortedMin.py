@@ -17,9 +17,22 @@ def findMin1(nums):
             e = mid - 1
     return minimum
 
+def findMin2(nums):
+    s = 0
+    e = len(nums) - 1
+    while s < e:
+        mid = (s + e) // 2
+        if nums[mid] > nums[e]:
+            s = mid + 1   # ans lies in unsorted part cauz it has pivot(largest and smallest).
+        else:
+            e = mid
+    return nums[e] #we can return both s or e its fine both will be pointing at same.
+
 if __name__ == "__main__":
     print("Array:")
     print_array(nums)
     print("minimum in array is:")
-    ans = findMin1(nums)
-    print(ans)
+    ans1 = findMin1(nums)
+    ans2 = findMin2(nums)
+    print(ans1)
+    print(ans2)
